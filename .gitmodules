@@ -1,0 +1,18 @@
+[submodule "third_party/segment-anything-2"]
+	path = third_party/segment-anything-2
+	url = https://github.com/facebookresearch/segment-anything-2.git
+[submodule "third_party/GroundingDINO"]
+	path = third_party/GroundingDINO
+	url = https://github.com/IDEA-Research/GroundingDINO.git
+[submodule "third_party/recognize-anything"]
+	path = third_party/recognize-anything
+	url = https://github.com/xinyu1205/recognize-anything.git
+[submodule "third_party/LightGlue"]
+	path = third_party/LightGlue
+	url = https://github.com/cvg/LightGlue.git
+[submodule "third_party/pytorch3d"]
+	path = third_party/pytorch3d
+	url = https://github.com/facebookresearch/pytorch3d.git
+[submodule "third_party/DROID-SLAM"]
+	path = third_party/DROID-SLAM
+	url = https://github.com/princeton-vl/DROID-SLAM.git

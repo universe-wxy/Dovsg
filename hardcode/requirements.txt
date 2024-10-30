@@ -1,0 +1,1 @@
+pip install roslibpy numpy matplotlib scipy lebai_sdk IPython pyrealsense2 opencv-python zmq -i https://pypi.tuna.tsinghua.edu.cn/simple
