@@ -1,4 +1,4 @@
-# DovGS
+# DovSG
 ## Dynamic Open-Vocabulary 3D Scene Graphs for Long-term Language-Guided Mobile Manipulation
 
 <!-- ### 📢 News
