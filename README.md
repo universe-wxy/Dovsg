@@ -98,5 +98,5 @@ python demo.py --tags `your_name_of_scene` --preprocess --task_scene_change_leve
 
 ## Reference
 - Ok-Robot: [https://ok-robot.github.io/](https://ok-robot.github.io/)
-- RoboEXP: [https://github.com/Jianghanxiao/RoboEXP]: https://github.com/Jianghanxiao/RoboEXP
+- RoboEXP: [https://github.com/Jianghanxiao/RoboEXP](https://github.com/Jianghanxiao/RoboEXP)
 - ConceptGraphs: [https://github.com/concept-graphs/concept-graphs](https://github.com/concept-graphs/concept-graphs)
