@@ -61,7 +61,7 @@ Ubuntu 20.04. [ROS Installation](http://wiki.ros.org/ROS/Installation).
 ### 2.1 Environment Setup
 - Install **DROID-SLAM** environment for scan the room: [install_droidslam.md](docs/install_droidslam.md).
 
-- Install **DovSG** environment for scan the room: [install_dovsg.md](docs/install_dovsg.md).
+- Install **DovSG** environment for running the DovSG: [install_dovsg.md](docs/install_dovsg.md).
 
 - Download checkpoints: [down_checkpoints.md](docs/down_checkpoints.md)
 
