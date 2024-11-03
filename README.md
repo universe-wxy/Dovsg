@@ -71,7 +71,7 @@ Ubuntu 20.04. [ROS Installation](http://wiki.ros.org/ROS/Installation).
 You can directly download the pre-recorded scenes we provided from <a href="https://drive.google.com/drive/folders/13v5QOrqjxye__kJwDIuD7kTdeSSNfR5x?usp=sharing">Google Cloud</a>. Please place them in the project's root directory, specifically in `DovSG/data_example`, and set the tags to `your_name_of_scene`, such as `room1`.
 
 ```bash
-python demo.py --tags room1 preprocess --debug --task_scene_change_level "Minor Adjustment" --task_description "Please move the red pepper to the plate, then move the green pepper to plate."
+python demo.py --tags room1 --preprocess --debug --task_scene_change_level "Minor Adjustment" --task_description "Please move the red pepper to the plate, then move the green pepper to plate."
 ```
 
 ### 3.2 Run on real world workstation
