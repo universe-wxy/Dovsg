@@ -27,11 +27,14 @@ Our paper is now available on **arXiv**:  [Dynamic Open-Vocabulary 3D Scene Grap
 If our code is used in your project, please cite our paper following the bibtex below:
 
 ```
-@article{zheng2022fast,
-  title={FAST-LIVO: Fast and Tightly-coupled Sparse-Direct LiDAR-Inertial-Visual Odometry},
-  author={Zheng, Chunran and Zhu, Qingyan and Xu, Wei and Liu, Xiyuan and Guo, Qizhi and Zhang, Fu},
-  journal={arXiv preprint arXiv:2203.00893},
-  year={2022}
+@misc{yan2024dynamicopenvocabulary3dscene,
+      title={Dynamic Open-Vocabulary 3D Scene Graphs for Long-term Language-Guided Mobile Manipulation}, 
+      author={Zhijie Yan and Shufei Li and Zuoxu Wang and Lixiu Wu and Han Wang and Jun Zhu and Lijiang Chen and Jihong Liu},
+      year={2024},
+      eprint={2410.11989},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2410.11989}, 
 }
 ```
 
