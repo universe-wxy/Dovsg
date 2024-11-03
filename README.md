@@ -75,7 +75,7 @@ python demo.py --tags room1 --preprocess --debug --task_scene_change_level "Mino
 ```
 
 ### 3.2 Run on real world workstation
-You need to refer to <a herf="https://github.com/agilexrobotics/ranger_ros">here</a> to configure the aglix ranger mini.
+You need to refer to <a href="https://github.com/agilexrobotics/ranger_ros">here</a> to configure the aglix ranger mini.
 
 3.2.1 You should Scanning the room for memory
 ```bash
