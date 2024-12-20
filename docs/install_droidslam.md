@@ -8,16 +8,16 @@ get DROID-SLAM repo
 > isntall DROID-SLAM env is easy.
 
 ```bash
-git submodule add https://github.com/princeton-vl/DROID-SLAM.git third_party/DROID-SLAM
-git submodule update --init --recursive third_party/DROID-SLAM
+# we use branch ``8016d2b
 cd third_party/DROID-SLAM
 
 # there has a line need to change for depth input
-# at line 90 in DovSG/third_party/DROID-SLAM/droid_slam/trajectory_filler.py
+# at line 90 in DROID-SLAM/droid_slam/trajectory_filler.py
 # for (tstamp, image, intrinsic) in image_stream: ==> for (tstamp, image, _, intrinsic) in image_stream:
 ```
 
 ```bash
+# DROID-SLAM need cuda low than 12.1, we use cuda-11.8, so you may need to edit ~/.bashrc
 conda env create -f environment.yaml
 conda activate droidenv
 pip install evo --upgrade --no-binary evo
@@ -25,5 +25,5 @@ pip install gdown
 python setup.py install
 ```
 
-
+🎉 now, everything is ok, let's try it.
 
