@@ -59,6 +59,11 @@ Our accompanying demo are now available on [**YouTube**](https://www.youtube.com
 Ubuntu 20.04. [ROS Installation](http://wiki.ros.org/ROS/Installation).
 
 ### 2.1 Environment Setup
+
+```bash
+git clone git@github.com:BJHYZJ/DovSG.git
+```
+
 - Install **DROID-SLAM** environment for scan the room: [install_droidslam.md](docs/install_droidslam.md).
 
 - Install **DovSG** environment for running the DovSG: [install_dovsg.md](docs/install_dovsg.md).
