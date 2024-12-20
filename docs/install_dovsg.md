@@ -115,8 +115,8 @@ pip install "/path/to/torch_cluster*.whl"
 ```
 
 ```bash
-pip install numpy==1.23.0 supervision==0.14.0  # -i https://pypi.tuna.tsinghua.edu.cn/simple
-pip install pyrealsense2 open_clip_torch graphviz alphashape pyrender  # -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install numpy==1.23.0 supervision==0.14.0 shapely alphashape   # -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install pyrealsense2 open_clip_torch graphviz pyrender  # -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip install openai==1.43.0
 
 ```

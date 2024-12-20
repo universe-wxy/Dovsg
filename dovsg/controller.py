@@ -294,11 +294,43 @@ class Controller():
 
 
     def show_pointcloud(self, is_visualize=True):
-        pcd = self.view_dataset.index_to_pcd(list(self.view_dataset.indexes_colors_mapping_dict.keys()))
+        if self.view_dataset is not None:
+            pcd = self.view_dataset.index_to_pcd(list(self.view_dataset.indexes_colors_mapping_dict.keys()))
+        else:
+            # cache_path = self.memory_dir / f"pointcloud.ply"
+            # if cache_path.exists():
+            #     print(f"\n\nFound exist {cache_path}, loading it!\n\n")
+            #     pcd = o3d.io.read_point_cloud(str(cache_path))
+            # else:
+            point_dir = self.recorder_dir / "point"
+            rgb_dir = self.recorder_dir / "rgb"
+            mask_dir = self.recorder_dir / "mask"
+            poses_dir = self.recorder_dir / "poses"
+            pcd = o3d.geometry.PointCloud()
+            for index in tqdm(range(0, len(list(rgb_dir.iterdir())), self.interval), desc="point cloud"):
+                img_path = rgb_dir / f"{index:06}.jpg"
+                point_path = point_dir / f"{index:06}.npy"
+                pose_path = poses_dir / f"{index:06}.txt"
+                mask_path = mask_dir / f"{index:06}.npy"
+                image = np.asarray(Image.open(img_path), dtype=np.uint8)
+                point = np.load(point_path)
+                pose = np.loadtxt(pose_path)
+                mask = np.load(mask_path)
+                rgb = image / 255
+                point_world = point @ pose[:3, :3].T + pose[:3, 3]
+                
+                _pcd = o3d.geometry.PointCloud()
+                _pcd.points = o3d.utility.Vector3dVector(point_world[mask])
+                _pcd.colors = o3d.utility.Vector3dVector(rgb[mask])
+                pcd += _pcd
+                # cache_path.parent.mkdir(exist_ok=True)
+                # o3d.io.write_point_cloud(str(cache_path), pcd)
+
         if is_visualize:
             pcd_downsample = pcd.voxel_down_sample(0.05)
             coordinate_frame = o3d.geometry.TriangleMesh.create_coordinate_frame(size=0.3, origin=[0, 0, 0])
             o3d.visualization.draw_geometries([pcd_downsample, coordinate_frame])
+
         return pcd
 
     def show_droidslam_pointcloud(self, use_inlier_mask=False, is_visualize=False, voxel_size=0.01):
@@ -1102,6 +1134,7 @@ class Controller():
                 save_name = f"{index + 1}_after_{task['action']}({task['object1']}, {task['object2']})"
             else:
                 raise NotImplementedError
+            
             # Just use wrist camera, which is enough
             just_wrist = True
             observations, correct_success = self.get_align_observations(
@@ -1151,12 +1184,12 @@ class Controller():
             clip_vis=clip_vis
         )
 
-        if True:
-            pcd_all = o3d.geometry.PointCloud()
-            for pcd in pcds:
-                pcd_all += pcd
+        # if True:
+        #     pcd_all = o3d.geometry.PointCloud()
+        #     for pcd in pcds:
+        #         pcd_all += pcd
 
-            o3d.io.write_point_cloud(str(self.memory_dir / "pointcloud.ply"), pcd_all)
+        #     o3d.io.write_point_cloud(str(self.memory_dir / "pointcloud.ply"), pcd_all)
 
     def find_need_to_delete_indexes(self, observations: dict):
         depth_thres = self.resolution * 2

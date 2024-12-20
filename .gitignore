@@ -1,6 +1,5 @@
 *.tar
 *.pyc
-*.pt
 *.ply
 **/*.egg-info/
 *.egg

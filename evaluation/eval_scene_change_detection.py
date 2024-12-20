@@ -1,5 +1,5 @@
 import sys
-sys.path.append("/home/yanzj/workspace/code/DovSG")
+sys.path.append("/home/yanzj/workspace/code1/DovSG")
 from dovsg.scripts.rgb_feature_match import RGBFeatureMatch
 import numpy as np
 import os
@@ -136,7 +136,7 @@ class EvalSceneChange:
         return prompt_json
 
 if __name__ == "__main__":
-    memory_floder = Path("/home/yanzj/workspace/code/DovSG/data/company_room_1_10_5_new/memory/3_0.1_0.01_True_0.2_0.5")
+    memory_floder = Path("/home/yanzj/workspace/code1/DovSG/data/company_room_1_10_5_new/memory/3_0.1_0.01_True_0.2_0.5")
     output_floder = Path("evaluation/output")
     eval_scene_change = EvalSceneChange(memory_floder=memory_floder, output_floder=output_floder)
     eval_scene_change.gpt4o_eval_scene_chagne_detection()

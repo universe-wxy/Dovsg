@@ -32,8 +32,8 @@ def main(args):
         controller.train_ace()
 
         # vis_depth(controller.recorder_dir)
-
-    controller.show_droidslam_pointcloud(use_inlier_mask=False, is_visualize=True)
+   
+        controller.show_pointcloud(is_visualize=True)
 
     # when first times, init scenario
     controller.get_view_dataset()
@@ -43,7 +43,7 @@ def main(args):
     controller.get_lightglue_features()
 
 
-    controller.show_pointcloud()
+    # controller.show_pointcloud()
     controller.show_instances(
         controller.instance_objects, 
         clip_vis=True, 
