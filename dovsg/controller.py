@@ -66,7 +66,7 @@ class Controller():
             nb_neighbors: int=35,
             std_ratio: float=1.5,
 
-            socket_ip: str="192.168.1.54",
+            socket_ip: str="192.168.1.50",
             socket_port: str="9999"
         ):
 
@@ -722,8 +722,7 @@ class Controller():
         print("===> get observations from robot.")
 
         _, observations = self.get_observations(just_wrist=just_wrist, save_name=save_name)
-        rough_poses = self.test_ace(observations)
-
+        
         for name, obs in observations.items():
             point = obs["point"]
             rgb = obs["rgb"]
@@ -732,7 +731,7 @@ class Controller():
                 inlier_mask = get_inlier_mask(point=point, color=rgb, mask=mask)
                 mask = np.logical_and(mask, inlier_mask)
             obs["mask"] = mask
-            obs["pose"] = rough_poses[name]
+            # obs["pose"] = rough_poses[name]
 
         if self_align:
             observations = self.self_align_observations(observations)
@@ -740,6 +739,9 @@ class Controller():
         is_success = True
         # align observations from base coord to world coord
         if align_to_world:
+            rough_poses = self.test_ace(observations)
+            for name, obs in observations.items():
+                obs["pose"] = rough_poses[name]
             observations, is_success = self.correct_pose_observations(observations)
             if show_align and is_success:
                 self.show_pointcloud_for_align(observations)
@@ -1111,6 +1113,9 @@ class Controller():
             align_to_world=True,
             save_name="0_start",
         )
+        if not correct_success:
+            assert 1 == 0, "Init Pose Error!"
+
         init_position, init_rotation = self.get_current_position(observations)
         current_position = init_position
         current_rotation = init_rotation
@@ -1149,8 +1154,8 @@ class Controller():
             # just after pick up and place, update scene
             if task["action"] in ["Pick up", "Place"]:
                 if not correct_success:
-                    print("relocalize error.")
-                    exit(0)       
+                    assert 1 == 0, "relocalize error!"
+                    
                 self.update_scene(observations=observations)
                 end_time = time.time()
                 print(f"Step spend time is: {end_time - start_time}")

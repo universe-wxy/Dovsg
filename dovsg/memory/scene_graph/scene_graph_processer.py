@@ -346,7 +346,7 @@ class SceneGraphProcesser:
 
             if isinstance(alpha_shape, MultiPolygon):
                 alpha_shape = max(alpha_shape.geoms, key=lambda shape: shape.area)
-            if alpha_shape is None: assert 1 == 1
+            
             label_to_object_information_mapping[class_id] = {
                 "ins_obj": ins_obj,
                 "lower_z": lower_z,
@@ -698,9 +698,6 @@ class SceneGraphProcesser:
         ))
 
         for key, value in delete_node_generation_mapping.items():
-            if value["generation"] > 1:
-                assert 1 == 1
-
             object_node = value["node"]
             print(value["generation"], object_node.node_id)
             object_node.delete()

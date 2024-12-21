@@ -39,7 +39,7 @@ class ZmqClientSocket:
 
 
 class ZmqSocket:
-    def __init__(self, ip="192.168.1.54", port="9999"):
+    def __init__(self, ip="192.168.1.50", port="9999"):
         self.client = ZmqClientSocket(ip, port)
     
     def send_info(self, info, type):  # type are include in [paths, pose, frame, over]

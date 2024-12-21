@@ -214,5 +214,3 @@ if __name__ == "__main__":
     # for pose in poses:
     #     # Move to the pose and wait for 5s to make it stable
     #     xarm.move_to_pose(pose=pose, wait=True, ignore_error=True)
-
-    assert 1 == 1
