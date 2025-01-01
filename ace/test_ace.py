@@ -50,8 +50,7 @@ class AceTestdataProcess:
     
     def process_frames(self, observations):
         batch_data = []
-        for i in range(len(observations)):
-            obs = observations[i]
+        for name, obs in observations.items():
             rgb = obs["rgb"]
             depth = obs["depth"]
             mask = obs["mask"]
@@ -161,7 +160,7 @@ def test_ace(network, observations):
             out_pose = torch.zeros((4, 4))
 
             # Compute the pose via RANSAC.
-            dsacstar.forward_rgb(
+            inlierMap_num = dsacstar.forward_rgb(
                 scene_coordinates_3HW.unsqueeze(0),
                 out_pose,
                 options.hypotheses, # 64
@@ -174,7 +173,7 @@ def test_ace(network, observations):
                 network.OUTPUT_SUBSAMPLE,
             )
             # print(out_pose)
-            estimation_poses.append(out_pose.cpu().numpy())
+            estimation_poses.append([out_pose.cpu().numpy(), inlierMap_num])
             
     del network
     torch.cuda.empty_cache()

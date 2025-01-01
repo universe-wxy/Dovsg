@@ -638,7 +638,7 @@ class Controller():
                     ),
                 )
                 print(f"IPC Number: {len(result_icp.correspondence_set)}, {len(source_down.points)}, {len(target_down.points)}")
-                if len(result_icp.correspondence_set) >= (1 / 3) * min(len(source_down.points), len(target_down.points)):
+                if len(result_icp.correspondence_set) >= (1 / 5) * min(len(source_down.points), len(target_down.points)):
                     transformation = result_icp.transformation
                     if idx == len(voxel_radius) - 1:
                         is_success = True
@@ -653,14 +653,18 @@ class Controller():
         featurematch = RGBFeatureMatch()
         target_index_dict = {}
         best_matches_len_list = []
+        pose_inlier_num_list = []
         for name, obs in observations.items():
             rgb = obs["rgb"]
             image = (rgb * 255).astype(np.uint8)
             best_index, best_matches_len = featurematch.find_most_similar_image(
-                image, features=self.lightglue_features)
+                image, features=self.lightglue_features, visualize=False, view_dataset=self.view_dataset)
             
             target_index_dict[name] = best_index
             best_matches_len_list.append(best_matches_len)
+            pose_inlier_num_list.append(obs["pose_inlier_num"])
+
+        best_matches_index = np.argmax(np.array(best_matches_len_list) * 0.1 + np.array(pose_inlier_num_list) * 0.9)
 
         
         # find the biggest matches ace pose for other pose refinement
@@ -740,8 +744,8 @@ class Controller():
         # align observations from base coord to world coord
         if align_to_world:
             rough_poses = self.test_ace(observations)
-            for name, obs in observations.items():
-                obs["pose"] = rough_poses[name]
+            for index, (name, obs) in enumerate(observations.items()):
+                obs["pose"], obs["pose_inlier_num"] = rough_poses[index]
             observations, is_success = self.correct_pose_observations(observations)
             if show_align and is_success:
                 self.show_pointcloud_for_align(observations)

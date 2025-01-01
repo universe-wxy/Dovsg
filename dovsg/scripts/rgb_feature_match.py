@@ -62,9 +62,10 @@ class RGBFeatureMatch:
                 best_matches_len = len(matches["matches"])
         # assert max(matches_lens) == best_matches_len
 
+        # print(best_score, best_matches_len)
         if visualize:
             assert view_dataset is not None, "view dataset must been set when you want to visualize"
-            best_image = Image.fromarray(view_dataset.images[index])
+            best_image = Image.fromarray(view_dataset.images[best_index])
             see_image = Image.fromarray(image)
             height, width, _ = image.shape
             new_width = width * 2
@@ -73,5 +74,5 @@ class RGBFeatureMatch:
             new_img.paste(see_image, (0, 0))
             new_img.paste(best_image, (width, 0))
             new_img.show()
-            
+
         return best_index, best_matches_len
