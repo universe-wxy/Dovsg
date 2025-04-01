@@ -42,28 +42,28 @@ CROP_INFO = {
     "right": 600
 }
 
-RECORDER_DIR = Path("/home/yanzj/workspace/code1/DovSG/data/")
+RECORDER_DIR = Path("data_example")
 
 # sam2
-sam2_checkpoint_path = "/home/yanzj/workspace/code1/DovSG/checkpoints/segment-anything-2/sam2_hiera_large.pt"
+sam2_checkpoint_path = "checkpoints/segment-anything-2/sam2_hiera_large.pt"
 sam2_model_cfg_path = "../sam2_configs/sam2_hiera_l.yaml"
 
 # groundingdino
-grounding_dino_config_path = "/home/yanzj/workspace/code1/DovSG/checkpoints/GroundingDINO/GroundingDINO_SwinT_OGC.py"
-grounding_dino_checkpoint_path = "/home/yanzj/workspace/code1/DovSG/checkpoints/GroundingDINO/groundingdino_swint_ogc.pth"
+grounding_dino_config_path = "checkpoints/GroundingDINO/GroundingDINO_SwinT_OGC.py"
+grounding_dino_checkpoint_path = "checkpoints/GroundingDINO/groundingdino_swint_ogc.pth"
 
 # ram
-ram_checkpoint_path = "/home/yanzj/workspace/code1/DovSG/checkpoints/recognize_anything/ram_swin_large_14m.pth"
+ram_checkpoint_path = "checkpoints/recognize_anything/ram_swin_large_14m.pth"
 
 # clip
 clip_model_name = "ViT-H-14"
-clip_checkpoint_path = "/home/yanzj/workspace/code1/DovSG/checkpoints/CLIP-ViT-H-14-laion2B-s32B-b79K/open_clip_pytorch_model.bin"
+clip_checkpoint_path = "checkpoints/CLIP-ViT-H-14-laion2B-s32B-b79K/open_clip_pytorch_model.bin"
 
 # anygrasp
-anygrasp_checkpoint_path = "/home/yanzj/workspace/code1/DovSG/checkpoints/anygrasp/checkpoint_detection.tar"
+anygrasp_checkpoint_path = "checkpoints/anygrasp/checkpoint_detection.tar"
 
 #
-bert_base_uncased_path = "/home/yanzj/workspace/code1/DovSG/checkpoints/bert-base-uncased"
+bert_base_uncased_path = "checkpoints/bert-base-uncased"
 
 # ROBOT_IP = "192.168.188.6"
 # LOOP_SCENE_ID = "10177"

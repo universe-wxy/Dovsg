@@ -25,6 +25,6 @@ def train_ace(scene, output_map_file):
     torch.cuda.empty_cache()
 
 if __name__ == '__main__':
-    scene = Path("/home/yanzj/workspace/code/DovSG/data/company")
+    scene = Path("data_example/company")
     output_map_file = scene / "ace/ace.pt"
     train_ace(scene, output_map_file)

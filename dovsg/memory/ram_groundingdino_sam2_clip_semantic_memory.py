@@ -6,9 +6,6 @@ from torchvision import transforms
 # ram model
 from ram.models import ram
 from ram import inference_ram
-append_path = "/home/yanzj/workspace/code1/DovSG"
-if append_path not in sys.path:
-    sys.path.append(append_path)
 from dovsg.perception.models.mygroundingdinosam2 import MyGroundingDINOSAM2
 from dovsg.perception.models.myclip import MyClip
 from dovsg.utils.utils import ram_checkpoint_path, bert_base_uncased_path

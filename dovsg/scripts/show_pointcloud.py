@@ -12,7 +12,7 @@ import os
 from tqdm import tqdm
 import torch
 import torchvision.transforms.functional as V
-
+import argparse
 
 def apply_pose_to_xyz(xyz: np.ndarray, pose: np.ndarray) -> np.ndarray:
     # xyz_reshaped = xyz.reshape(-1, 3)
@@ -58,13 +58,13 @@ def pose_process(pose_end_in_base):
     print("*******************************************")
     return T_cam_in_base
 
-def rgb_depth_to_pcd():
-    tags = "test"
+def rgb_depth_to_pcd(args):
+    tags = args.tags
     rgb_image_dir = RECORDER_DIR / tags / "rgb"
     point_image_dir = RECORDER_DIR / tags / "point"
-    poses_dir = RECORDER_DIR / tags / "poses"
+    poses_dir = RECORDER_DIR / tags / args.pose_tags
     mask_dir = RECORDER_DIR / tags / "mask"
-
+    
     color_image_paths = [os.path.join(rgb_image_dir, f) for f in 
                             sorted(os.listdir(rgb_image_dir), key=lambda x: int(os.path.basename(x).split(".")[0]))]
     point_paths = [os.path.join(point_image_dir, f) for f in 
@@ -107,4 +107,12 @@ def rgb_depth_to_pcd():
 
 
 if __name__ == "__main__":
-    rgb_depth_to_pcd()
+    parser = argparse.ArgumentParser(
+        description='Show PointCloud.',
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
+    parser.add_argument('--tags', type=str, default="room1", help='tags for scene.')
+    parser.add_argument('--pose_tags', type=str, default="poses_droidslam", help='tags for scene.')
+
+    args = parser.parse_args()
+    rgb_depth_to_pcd(args)

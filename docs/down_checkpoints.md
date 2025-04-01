@@ -12,14 +12,33 @@ In our project, a total of 7 models are used. The versions and download links/me
 You should organize the checkpoints as follows:
 ```bash
 DovSG/
-    ├──checkpoints
-    │    ├──anygrasp
-    │    ├──bert-base-uncased
-    │    ├──CLIP-ViT-H-14-laion2B-s32B-b79K
-    │    ├──droid-slam
-    │    ├──GroundingDINO
-    │    ├──recognize_anything
-    │    └──segment-anything-2
-    ├──license  # anygrasp license
+    ├── checkpoints
+    │   ├── anygrasp
+    │   │   ├── checkpoint_detection.tar
+    │   │   └── checkpoint_tracking.tar
+    │   ├── bert-base-uncased
+    │   │   ├── config.json
+    │   │   ├── model.safetensors
+    │   │   ├── tokenizer_config.json
+    │   │   ├── tokenizer.json
+    │   │   └── vocab.txt
+    │   ├── CLIP-ViT-H-14-laion2B-s32B-b79K
+    │   │   └── open_clip_pytorch_model.bin
+    │   ├── droid-slam
+    │   │   └── droid.pth
+    │   ├── GroundingDINO
+    │   │   ├── groundingdino_swint_ogc.pth
+    │   │   └── GroundingDINO_SwinT_OGC.py
+    │   ├── recognize_anything
+    │   │   └── ram_swin_large_14m.pth
+    │   └── segment-anything-2
+    │       └── sam2_hiera_large.pt
+    └── license
+        ├── licenseCfg.json
+        ├── ZhijieYan.lic
+        ├── ZhijieYan.public_key
+        └── ZhijieYan.signature
     ...  
 ```
+
+🎉 now, everything is ok, let's try it.

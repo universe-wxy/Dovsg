@@ -15,7 +15,7 @@ cd DovSG
 
 please fellow the above step to setup environment
 
-> use cuda-12.1 and install `torch==2.3.1`
+> Use cuda-12.1 and install `torch==2.3.1`
 ```bash
 pip install torch==2.3.1 torchvision==0.18.1 torchaudio==2.3.1 --index-url https://download.pytorch.org/whl/cu121  # -i https://pypi.tuna.tsinghua.edu.cn/simple
 
@@ -63,7 +63,7 @@ python setup.py install
 ```
 
 
-> install `lightglue` for searching similar image 
+> Install `lightglue` for searching similar image 
 
 ```bash
 cd ../../third_party/LightGlue
@@ -73,14 +73,14 @@ python -m pip install -e .
 
 
 
-> install Faiss
+> Install `Faiss`
 ```bash
 # Install the Faiss library (CPU version should be fine)
 conda install -c pytorch faiss-cpu=1.7.4 mkl=2021 blas=1.0=mkl
 ```
 
 
-> install pytorch3d
+> Install `pytorch3d`
 
 ```bash
 cd ../../third_party/pytorch3d
@@ -89,7 +89,7 @@ python setup.py install
 ```
 
 
-> install other package
+> Install other package
 
 ```bash
 cd ../../
@@ -97,7 +97,7 @@ pip install ipython cmake pybind11 ninja scipy==1.10.1 scikit-learn==1.4.0 panda
 ```
 
 
-> install `protobuf==3.19.0, MinkowskiEngine graspnet api`. this package is a little difficult to instll
+> Install `protobuf==3.19.0, MinkowskiEngine graspnet api`. this package is a little difficult to instll
 ```bash
 pip install protobuf==3.19.0  # -i https://pypi.tuna.tsinghua.edu.cn/simple
 
@@ -106,10 +106,11 @@ pip install git+https://github.com/pccws/MinkowskiEngine  # -i https://pypi.tuna
 pip install graspnetAPI  # -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
-> install `torch-cluster`
+> Install `torch-cluster`
 
 ```bash
 # download whl file from https://pytorch-geometric.com/whl/torch-2.3.0%2Bcu121.html
+# wget https://data.pyg.org/whl/torch-2.3.0%2Bcu121/torch_cluster-1.6.3%2Bpt23cu121-cp39-cp39-linux_x86_64.whl
 pip install "/path/to/torch_cluster*.whl"
 # For example: pip install torch_cluster-1.6.3+pt23cu121-cp39-cp39-linux_x86_64.whl
 ```
@@ -118,5 +119,12 @@ pip install "/path/to/torch_cluster*.whl"
 pip install numpy==1.23.0 supervision==0.14.0 shapely alphashape   # -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip install pyrealsense2 open_clip_torch graphviz pyrender  # -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip install openai==1.43.0
-
+pip install transforms3d==0.3.1 scikit-image==0.19.3
 ```
+
+> Install dovsg
+```bash
+pip install -e .
+```
+
+Then, install the [DROID-SLAM](https://github.com/princeton-vl/DROID-SLAM) environment by following [install_droidslam.md](install_droidslam.md).

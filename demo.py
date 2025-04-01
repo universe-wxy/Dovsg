@@ -42,8 +42,17 @@ def main(args):
     controller.get_instance_scene_graph()
     controller.get_lightglue_features()
 
-
     # controller.show_pointcloud()
+    """
+        press "B" to show background
+        press "C" to color by class
+        press "R" to color by rgb
+        press "F" to color by clip sim
+        press "G" to toggle scene graph
+        press "I" to color by instance
+        press "O" to toggle bbox
+        press "V" to save view params
+    """
     controller.show_instances(
         controller.instance_objects, 
         clip_vis=True, 

@@ -27,15 +27,16 @@ Our paper is now available on **arXiv**:  [Dynamic Open-Vocabulary 3D Scene Grap
 If our code is used in your project, please cite our paper following the bibtex below:
 
 ```
-@misc{yan2024dynamicopenvocabulary3dscene,
-      title={Dynamic Open-Vocabulary 3D Scene Graphs for Long-term Language-Guided Mobile Manipulation}, 
-      author={Zhijie Yan and Shufei Li and Zuoxu Wang and Lixiu Wu and Han Wang and Jun Zhu and Lijiang Chen and Jihong Liu},
-      year={2024},
-      eprint={2410.11989},
-      archivePrefix={arXiv},
-      primaryClass={cs.RO},
-      url={https://arxiv.org/abs/2410.11989}, 
-}
+@ARTICLE{10909193,
+  author={Yan, Zhijie and Li, Shufei and Wang, Zuoxu and Wu, Lixiu and Wang, Han and Zhu, Jun and Chen, Lijiang and Liu, Jihong},
+  journal={IEEE Robotics and Automation Letters}, 
+  title={Dynamic Open-Vocabulary 3D Scene Graphs for Long-Term Language-Guided Mobile Manipulation}, 
+  year={2025},
+  volume={10},
+  number={5},
+  pages={4252-4259},
+  keywords={Three-dimensional displays;Robots;Planning;Semantics;Robot kinematics;Navigation;Containers;Visualization;Mobile robots;Manipulator dynamics;3D scene graph;long-term tasks;mobile manipulation;open vocabulary},
+  doi={10.1109/LRA.2025.3547643}}
 ```
 
 
@@ -74,22 +75,81 @@ conda activate dovsg
 
 ## 3 Run DovSG
 
-### 3.1 Run our demo
+### 3.1 Testing and Visualization
 You can directly download the pre-recorded scenes we provided from <a href="https://drive.google.com/drive/folders/13v5QOrqjxye__kJwDIuD7kTdeSSNfR5x?usp=sharing">Google Cloud</a>. Please place them in the project's root directory, specifically in `DovSG/data_example`, and set the tags to `your_name_of_scene`, such as `room1`.
 
+Test DROID-SLAM Environment
+
+- Activate Conda Environment
 ```bash
-python demo.py --tags room1 --preprocess --debug --task_scene_change_level "Minor Adjustment" --task_description "Please move the red pepper to the plate, then move the green pepper to plate."
+conda deactivate 
+conda activate droidenv
+```
+- Running Pose Estimation Scripts
+```bash
+# cd /path/to/DovSG/
+python dovsg/scripts/pose_estimation.py \
+    --datadir "data_example/room1" \
+    --calib "data_example/room1/calib.txt" \
+    --t0 0 \
+    --stride 1 \
+    --weights "checkpoints/droid-slam/droid.pth" \
+    --buffer 2048
+
+```
+After the program finishes, you will see a new folder named `poses_droidslam` under `data_example/room1`, which contains the poses from all viewpoints.
+
+Next, run the following command to visualize the reconstructed scene based on the poses estimated by `DROID-SLAM`.
+
+- Activate Conda Environment
+```bash
+conda deactivate 
+conda activate dovsg
+```
+- Running Show PointCloud Scripts
+```bash
+python dovsg/scripts/show_pointcloud.py \
+    --tags "room1" \
+    --pose_tags "poses_droidslam"
+```
+If everything above runs without issues, you should be able to run the following command successfully.
+
+### 3.2 Run our demo
+
+Running Our Demo: The Workflow is as Follows: 
+1. Scan the room using a camera to collect `RGB-Ds` data.
+2. Estimate camera poses based on the collected `RGB-Ds`.
+3. Transform the coordinate system based on the detected `floor`.
+4. Train a relocalization model (`ACE`) for later use.
+5. Generate the `View Dataset`.
+6. Use `VLMs` to represent real-world objects as `nodes` in a `3D Scene Graph`, and extract `relationships` using a `rule-based` method.
+7. Extract `LightGlue` features to assist with future relocalization.
+8. Use `LLM` for `task planning`.
+9. Execute subtasks while `continuously updating` the 3D Scene Graph using `relocalization`.
+
+```bash
+python demo.py \
+    --tags "room1" \
+    --preprocess \
+    --debug \
+    --task_scene_change_level "Minor Adjustment" \
+    --task_description "Please move the red pepper to the plate, then move the green pepper to plate."
 ```
 
-### 3.2 Run on real world workstation
+### 3.3 Run on real world workstation
 You need to refer to <a href="https://github.com/agilexrobotics/ranger_ros">here</a> to configure the aglix ranger mini.
 
-3.2.1 You should Scanning the room for memory
+3.3.1 You should Scanning the room for memory
 ```bash
-python demo.py --tags `your_name_of_scene` --scanning_room --preprocess --task_scene_change_level your_task_scene_change_level --task_description your_task_description
+python demo.py \
+    --tags `your_name_of_scene` \
+    --scanning_room \
+    --preprocess \
+    --task_scene_change_level `your_task_scene_change_level` \
+     --task_description `your_task_description`
 ```
 
-3.2.2 In one terminal run the hardcode.
+3.3.2 In one terminal run the hardcode.
 ```bash
 cd hardcode
 source ~/agilex_ws/devel/setup.bash
@@ -100,9 +160,13 @@ roslaunch ranger_bringup ranger_mini_v2.launch
 python server.py  
 ```
 
-3.2.3 In another terminal run the Navigation and Manipulation Module.
+3.3.3 In another terminal run the Navigation and Manipulation Module.
 ```bash
-python demo.py --tags `your_name_of_scene` --preprocess --task_scene_change_level your_task_scene_change_level --task_description your_task_description 
+python demo.py \
+    --tags `your_name_of_scene` \
+    --preprocess \
+    --task_scene_change_level `your_task_scene_change_level` \
+     --task_description `your_task_description`
 ```
 
 

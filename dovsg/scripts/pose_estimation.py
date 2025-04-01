@@ -14,7 +14,7 @@ import json
 from pathlib import Path
 import shutil
 
-droid_path = "/home/yanzj/workspace/code1/DovSG/third_party/DROID-SLAM/droid_slam"
+droid_path = "./third_party/DROID-SLAM/droid_slam"
 if droid_path not in sys.path:
     sys.path.append(droid_path)
 
@@ -94,12 +94,12 @@ def quaternion2transformation(quat):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--datadir", type=str, default="/home/yanzj/workspace/code1/DovSG/data/company", help="path to image directory")
-    parser.add_argument("--calib", type=str, default="/home/yanzj/workspace/code1/DovSG/dovisg/company/calib.txt", help="path to calibration file")
+    parser.add_argument("--datadir", type=str, default="data_example/room1", help="path to image directory")
+    parser.add_argument("--calib", type=str, default="data_example/room1/calib.txt", help="path to calibration file")
     parser.add_argument("--t0", default=0, type=int, help="starting frame")
     parser.add_argument("--stride", default=1, type=int, help="frame stride")
 
-    parser.add_argument("--weights", default="../../checkpoints/droid-slam/droid.pth")
+    parser.add_argument("--weights", default="checkpoints/droid-slam/droid.pth")
     parser.add_argument("--buffer", type=int, default=2048)
     # parser.add_argument("--image_size", default=[240, 320])
     parser.add_argument("--disable_vis", default=True, type=bool)

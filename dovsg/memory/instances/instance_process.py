@@ -17,9 +17,6 @@ import sys
 import time
 from typing import List, Tuple
 
-append_path = "/home/yanzj/workspace/code1/DovSG"
-if append_path not in sys.path:
-    sys.path.append(append_path)
 from dovsg.memory.instances.instance_utils import DetectionList, MapObjectList
 from dovsg.memory.instances.instance_utils import to_tensor, to_numpy, get_bbox
 from dovsg.memory.view_dataset import ViewDataset
