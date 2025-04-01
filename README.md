@@ -59,7 +59,7 @@ Our accompanying demo are now available on [**YouTube**](https://www.youtube.com
 ### 2.1 Ubuntu and ROS
 Ubuntu 20.04. [ROS Installation](http://wiki.ros.org/ROS/Installation).
 
-### 2.1 Environment Setup
+### 2.2 Environment Setup
 
 ```bash
 conda create -n dovsg python=3.9 -y
