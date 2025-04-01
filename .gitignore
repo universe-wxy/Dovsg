@@ -26,7 +26,7 @@ data
 checkpoints
 
 evaluation/output
-data_example
+data_example/
 *.zip
 
 test.py
