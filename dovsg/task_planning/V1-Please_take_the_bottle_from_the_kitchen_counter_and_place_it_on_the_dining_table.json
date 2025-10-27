@@ -1,0 +1,13 @@
+{
+    "subtasks": [
+        {"action": "Go to","object1": "bottle","object2": "kitchen counter"},
+        {"action": "Pick up","object1": "bottle"},
+        {"action": "Go to","object1": "dining table","object2": null},
+        {"action": "Go to","object1": "dining table","object2": null},
+        {"action": "Place","object1": "bottle","object2": "dining table"},
+        {"action": "Go to","object1": "notebook","object2": "desk"},
+        {"action": "Pick up","object1": "notebook"},
+        {"action": "Go to","object1": "back","object2": null}
+    ],
+    "Reasoning": "This input involves two tasks: taking a bottle from the kitchen counter and placing it on the dining table, and retrieving a notebook from the desk. The subtasks are sequenced to accomplish the tasks effectively."
+}

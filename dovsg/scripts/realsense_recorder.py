@@ -16,10 +16,10 @@ from typing import Union
 # The actual image size required to ensure that 
 # the depth and color closer to the camera are not captured
 real_height = 600  # remove bottom 200px to remove robot arm in image bottom
-real_width = 1200
+real_width = 1280
 
 class RecorderImage():
-    def __init__(self, recorder_dir=None, serial_number="239222303321", 
+    def __init__(self, recorder_dir=None, serial_number="347622073075",
                  WH=WH, FPS=30, depth_threshold=[DEPTH_MIN, DEPTH_MAX]):
         
         if recorder_dir is not None:

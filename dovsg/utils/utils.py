@@ -20,7 +20,7 @@ T_cam_in_end[:3, :3] = R.from_quat(CAM_IN_END_Quaternion).as_matrix()
 T_cam_in_end[:3, 3] = CAM_IN_END_Translation
 
 
-WH = [1280, 720]  #  [640, 480]
+WH = [1280,720]  #  [640, 480]
 
 DEPTH_MIN = 0 # 0.2
 DEPTH_MAX = 2  # 2

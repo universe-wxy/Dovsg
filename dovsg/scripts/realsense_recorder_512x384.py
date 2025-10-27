@@ -19,7 +19,7 @@ real_height = 384
 real_width = 512
 
 class RecorderImage():
-    def __init__(self, recorder_dir=None, serial_number="327522300402", 
+    def __init__(self, recorder_dir=None, serial_number="f1180756",
                  WH=[640, 480], FPS=30, depth_threshold=[DEPTH_MIN, DEPTH_MAX]):
         
         if recorder_dir is not None:

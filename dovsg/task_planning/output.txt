@@ -1,0 +1,69 @@
+V1-Please_move_the_red_pepper_to_the_plate_then_move_the_green_pepper_to_plate.json:
+{
+    "subtasks": [
+        {"action": "Go to","object1": "red pepper","object2": null},
+        {"action": "Pick up","object1": "red pepper"},
+        {"action": "Go to","object1": "plate","object2": null},
+        {"action": "Place","object1": "red pepper","object2": "plate"},
+        {"action": "Go to","object1": "green pepper","object2": null},
+        {"action": "Pick up","object1": "green pepper"},
+        {"action": "Go to","object1": "plate","object2": null},
+        {"action": "Place","object1": "green pepper","object2": "plate"}
+    ],
+    "Reasoning": "This input describes two tasks: moving a red pepper to a plate and then moving a green pepper to the same plate. The subtasks involve going to each pepper, picking them up, and placing them onto the plate."
+}
+
+V1-Please_take_the_bottle_from_the_kitchen_counter_and_place_it_on_the_dining_table.json:
+{
+    "subtasks": [
+        {"action": "Go to","object1": "bottle","object2": "kitchen counter"},
+        {"action": "Pick up","object1": "bottle"},
+        {"action": "Go to","object1": "dining table","object2": null},
+        {"action": "Go to","object1": "dining table","object2": null},
+        {"action": "Place","object1": "bottle","object2": "dining table"},
+        {"action": "Go to","object1": "notebook","object2": "desk"},
+        {"action": "Pick up","object1": "notebook"},
+        {"action": "Go to","object1": "back","object2": null}
+    ],
+    "Reasoning": "This input involves two tasks: taking a bottle from the kitchen counter and placing it on the dining table, and retrieving a notebook from the desk. The subtasks are sequenced to accomplish the tasks effectively."
+}
+
+V2-Please_move_the_red_pepper_to_the_plate_then_move_the_green_pepper_to_plate.json:
+{
+    "subtasks": [
+        {"action": "Search","object1": "red pepper","object2": null},
+        {"action": "Go to","object1": "red pepper","object2": null},
+        {"action": "Pick up","object1": "red pepper"},
+        {"action": "Search","object1": "plate","object2": null},
+        {"action": "Go to","object1": "plate","object2": null},
+        {"action": "Place","object1": "red pepper","object2": "plate"},
+        {"action": "Inspect","object1": "red pepper","object2": "plate"},
+        {"action": "Search","object1": "green pepper","object2": null},
+        {"action": "Go to","object1": "green pepper","object2": null},
+        {"action": "Pick up","object1": "green pepper"},
+        {"action": "Go to","object1": "plate","object2": null},
+        {"action": "Place","object1": "green pepper","object2": "plate"},
+        {"action": "Inspect","object1": "green pepper","object2": "plate"}
+    ],
+    "Reasoning": "The input describes two tasks: moving a red pepper to the plate and then moving a green pepper to the same plate. The first set of subtasks involves searching for the red pepper, going to it, picking it up, searching for the plate, placing the red pepper on the plate, and inspecting the result. The second set follows a similar process for the green pepper: searching for it, going to it, picking it up, going to the plate again, placing the green pepper on the plate, and inspecting its placement."
+}
+
+V2-Please_take_the_bottle_from_the_kitchen_counter_and_place_it_on_the_dining_table.json:
+{
+    "subtasks": [
+        {"action": "Search","object1": "bottle","object2": "kitchen counter"},
+        {"action": "Go to","object1": "bottle","object2": "kitchen counter"},
+        {"action": "Pick up","object1": "bottle"},
+        {"action": "Search","object1": "dining table","object2": null},
+        {"action": "Go to","object1": "dining table","object2": null},
+        {"action": "Place","object1": "bottle","object2": "dining table"},
+        {"action": "Inspect","object1": "bottle","object2": "dining table"},
+        {"action": "Search","object1": "notebook","object2": "desk"},
+        {"action": "Go to","object1": "notebook","object2": "desk"},
+        {"action": "Pick up","object1": "notebook"},
+        {"action": "Search","object1": "user","object2": null},
+        {"action": "Go to","object1": "user","object2": null},
+        {"action": "Inspect","object1": "notebook","object2": "user"}
+    ],
+    "Reasoning": "The input describes two tasks: moving a bottle from the kitchen counter to the dining table, and then bringing a notebook from the desk to the requester. The first set of subtasks handles the bottle by searching for it, going to the kitchen counter, picking it up, searching for the dining table, placing the bottle on it, and inspecting the placement. The second set involves searching for the notebook, going to the desk, picking it up, searching for the requester, placing the notebook with the requester, and inspecting the handover."
+}

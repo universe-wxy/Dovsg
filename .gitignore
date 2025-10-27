@@ -9,6 +9,7 @@
 *.pth
 build
 dist
+.env
 
 
 *.swp
@@ -22,11 +23,14 @@ dist
 *.so
 *.pkl
 *.mp4
-data
-checkpoints
+
+data/
+checkpoints/
+third_party/
+.idea/
 
 evaluation/output
 data_example/
 *.zip
 
-test.py
+dovsg.pdf

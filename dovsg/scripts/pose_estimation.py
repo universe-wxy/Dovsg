@@ -59,10 +59,10 @@ def image_stream(datadir, calib, stride):
         # just for image shape [1280, 600] from Realsense D455
         # h1 = int(h0 * np.sqrt((360 * 768) / (h0 * w0)))
         # w1 = int(w0 * np.sqrt((360 * 768) / (h0 * w0)))
-        # h1 = int(h0 * np.sqrt((384 * 512) / (h0 * w0)))
-        # w1 = int(w0 * np.sqrt((384 * 512) / (h0 * w0)))
-        h1 = int(h0 * np.sqrt((240 * 320) / (h0 * w0)))
-        w1 = int(w0 * np.sqrt((240 * 320) / (h0 * w0)))
+        h1 = int(h0 * np.sqrt((640 * 300) / (h0 * w0)))
+        w1 = int(w0 * np.sqrt((640 * 300) / (h0 * w0)))
+        # h1 = int(h0 * np.sqrt((240 * 320) / (h0 * w0)))
+        # w1 = int(w0 * np.sqrt((240 * 320) / (h0 * w0)))
         # h1 = int(h0 * np.sqrt((h0 * w0) / (h0 * w0)))
         # w1 = int(w0 * np.sqrt((h0 * w0) / (h0 * w0)))
 
@@ -70,6 +70,7 @@ def image_stream(datadir, calib, stride):
         color = color[:h1-h1%8, :w1-w1%8]
         color = torch.as_tensor(color).permute(2, 0, 1)
 
+        # depth=depth.astype(np.float32)
         depth = depth.astype(np.float32) / 1000.0
         depth = torch.from_numpy(depth).float()[None,None]
         depth = F.interpolate(depth, (h1, w1), mode='nearest').squeeze()

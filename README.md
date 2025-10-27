@@ -89,8 +89,8 @@ conda activate droidenv
 ```bash
 # cd /path/to/DovSG/
 python dovsg/scripts/pose_estimation.py \
-    --datadir "data_example/room1" \
-    --calib "data_example/room1/calib.txt" \
+    --datadir "data_example/temp" \
+    --calib "data_example/temp/calib.txt" \
     --t0 0 \
     --stride 1 \
     --weights "checkpoints/droid-slam/droid.pth" \
@@ -109,7 +109,7 @@ conda activate dovsg
 - Running Show PointCloud Scripts
 ```bash
 python dovsg/scripts/show_pointcloud.py \
-    --tags "room1" \
+    --tags "temp" \
     --pose_tags "poses_droidslam"
 ```
 If everything above runs without issues, you should be able to run the following command successfully.

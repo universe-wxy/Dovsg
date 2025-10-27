@@ -422,7 +422,7 @@ class Controller():
 
     def train_ace(self):
         print("Train ACE")
-        _train_ace(self.recorder_dir, self.ace_network_path)
+        # _train_ace(self.recorder_dir, self.ace_network_path)
         print("Train ACE Over!")
         import logging
         logging.basicConfig(level=logging.NOTSET)

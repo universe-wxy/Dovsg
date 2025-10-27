@@ -1,0 +1,73 @@
+{
+    "subtasks": [
+        {
+            "action": "Search",
+            "object1": "red pepper",
+            "object2": null
+        },
+        {
+            "action": "Go to",
+            "object1": "red pepper",
+            "object2": null
+        },
+        {
+            "action": "Pick up",
+            "object1": "red pepper"
+        },
+        {
+            "action": "Search",
+            "object1": "plate",
+            "object2": null
+        },
+        {
+            "action": "Go to",
+            "object1": "plate",
+            "object2": null
+        },
+        {
+            "action": "Place",
+            "object1": "red pepper",
+            "object2": "plate"
+        },
+        {
+            "action": "Inspect",
+            "object1": "red pepper",
+            "object2": "plate"
+        },
+        {
+            "action": "Search",
+            "object1": "green pepper",
+            "object2": null
+        },
+        {
+            "action": "Go to",
+            "object1": "green pepper",
+            "object2": null
+        },
+        {
+            "action": "Pick up",
+            "object1": "green pepper"
+        },
+        {
+            "action": "Search",
+            "object1": "plate",
+            "object2": null
+        },
+        {
+            "action": "Go to",
+            "object1": "plate",
+            "object2": null
+        },
+        {
+            "action": "Place",
+            "object1": "green pepper",
+            "object2": "plate"
+        },
+        {
+            "action": "Inspect",
+            "object1": "green pepper",
+            "object2": "plate"
+        }
+    ],
+    "Reasoning": "The input describes two tasks: moving a red pepper to a plate and then moving a green pepper to the same plate. The first set of subtasks searches for the red pepper, goes to it, picks it up, searches for the plate, places the red pepper on it, and inspects the placement. The second set performs similar actions for the green pepper: searching for it, going to it, picking it up, searching for the plate again, placing the green pepper on the plate, and inspecting the result."
+}

@@ -18,7 +18,10 @@ class TaskPlanning:
     ):
         self.timeout = timeout
         self.save_dir = save_dir
-        self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        self.client = OpenAI(
+            api_key="sk-63gz3Qle25G87FtCtDYMzwqvfa1CIBA72PxS5ACg5AbHkJbI",
+            base_url="https://api.agicto.cn/v1"
+        )
 
     def get_response(
         self, 

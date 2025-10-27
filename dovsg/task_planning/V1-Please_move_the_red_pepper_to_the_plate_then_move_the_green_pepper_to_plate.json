@@ -1,0 +1,13 @@
+{
+    "subtasks": [
+        {"action": "Go to","object1": "red pepper","object2": null},
+        {"action": "Pick up","object1": "red pepper"},
+        {"action": "Go to","object1": "plate","object2": null},
+        {"action": "Place","object1": "red pepper","object2": "plate"},
+        {"action": "Go to","object1": "green pepper","object2": null},
+        {"action": "Pick up","object1": "green pepper"},
+        {"action": "Go to","object1": "plate","object2": null},
+        {"action": "Place","object1": "green pepper","object2": "plate"}
+    ],
+    "Reasoning": "This input describes two tasks: moving a red pepper to a plate and then moving a green pepper to the same plate. The subtasks involve going to each pepper, picking them up, and placing them onto the plate."
+}

@@ -1,9 +1,9 @@
 {
     "version": "3.1.0",
-    "feature_id": "12483945857328919013",
-    "public_key": "ZhijieYan.public_key",
-    "signature": "ZhijieYan.signature",
-    "license": "ZhijieYan.lic",
+    "feature_id": "3016401678165549389",
+    "public_key": "XiyuWang2.public_key",
+    "signature": "XiyuWang2.signature",
+    "license": "XiyuWang2.lic",
     "toolbox": [
         {
             "name": "Basic",
