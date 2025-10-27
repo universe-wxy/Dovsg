@@ -4,7 +4,7 @@ import numpy as np
 import open3d as o3d
 
 # ======== 修改你的文件路径 ========
-path = "/home/universe/workspace/DovSG/data_example/room1/point/000013.npy"
+path = "/home/universe/workspace/DovSG/third_party/anygrasp_sdk/grasp_detection/example_data/depth.png"
 
 assert os.path.isfile(path), f"File not found: {path}"
 arr = np.load(path)

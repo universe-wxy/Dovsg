@@ -93,7 +93,6 @@ class RecorderImage():
         dist_coef = np.array(self.intrinsic.coeffs)
         return intrinsic_matrix, dist_coef
 
-
     def project_point_to_pixel(self, points):
         # The points here should be in the camera coordinate, n*3
         points = np.array(points)
