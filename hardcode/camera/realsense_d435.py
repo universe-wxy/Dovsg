@@ -3,8 +3,8 @@ import numpy as np
 import cv2
 
 
-class RealSense_D455:
-    def __init__(self, WH=[640, 480], remove_robot=False, depth_threshold=[0, 2], serial_number="309122301398", FPS=30):
+class RealSense_D435:
+    def __init__(self, WH=[640, 480], remove_robot=False, depth_threshold=[0, 2], serial_number="347622073075", FPS=30):
         # Intialize the camera parameters
         self.WH = WH
         self.remove_robot = remove_robot
@@ -31,7 +31,7 @@ class RealSense_D455:
         self.intrinsic_matrix, self.dist_coef = self._get_readable_intrinsic()
         # Initialize depth process
         self._init_depth_process()
-        print(f"realsense d455 {serial_number} is ready to take")
+        print(f"realsense d435 {serial_number} is ready to take")
 
     def _get_readable_intrinsic(self):
         intrinsic_matrix = np.array(

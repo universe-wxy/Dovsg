@@ -68,7 +68,7 @@ def quat2rpy(quat):
     return rpy
 
 
-wrist_serial_number = "309122301398"
+wrist_serial_number = "347622073075"
 top_serial_number = "327522300402"
 
 calib_result_path = "calib/calibrate.pkl"

@@ -5,14 +5,16 @@ import time
 import traceback
 
 
-class XARM6:
+class XARM7:
     def __init__(
         self,
-        interface="192.168.1.233",
+        interface="192.168.1.222",
         # The pose corresponds to the servo angle
         # init_servo_angle=[0, -45, -45, 0, 90, 0],  # [0, -60, -30, 0, 90, 0]
-        init_servo_angle=[0, -45, -90, 0, 135, 0],
-        back_safty_angle=[180, -45, -90, 0, 135, 0]
+        # init_servo_angle=[0, -45, -90, 0, 135, 0],
+        # back_safty_angle=[180, -45, -90, 0, 135, 0]
+        init_servo_angle = [0, 10, 0, 25, 0, 10, 0],
+        back_safty_angle = [180, 0, 0, 150, 0, 100, 0]
     ):
         self.pprint("xArm-Python-SDK Version:{}".format(version.__version__))
         self.alive = True
@@ -186,7 +188,7 @@ class XARM6:
 
 
 if __name__ == "__main__":
-    xarm = XARM6()
+    xarm = XARM7()
     # pose must be [X, Y, Z, roll, pitch, yaw]
     # poses = [
     #     # Pose 1

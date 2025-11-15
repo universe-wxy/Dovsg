@@ -66,7 +66,8 @@ class Controller():
             nb_neighbors: int=35,
             std_ratio: float=1.5,
 
-            socket_ip: str="192.168.1.50",
+            # socket_ip: str="192.168.1.222",
+            socket_ip: str="127.0.0.1",
             socket_port: str="9999"
         ):
 
@@ -422,7 +423,7 @@ class Controller():
 
     def train_ace(self):
         print("Train ACE")
-        # _train_ace(self.recorder_dir, self.ace_network_path)
+        _train_ace(self.recorder_dir, self.ace_network_path)
         print("Train ACE Over!")
         import logging
         logging.basicConfig(level=logging.NOTSET)
@@ -637,7 +638,7 @@ class Controller():
                         relative_fitness=1e-6, relative_rmse=1e-6, max_iteration=iter
                     ),
                 )
-                print(f"IPC Number: {len(result_icp.correspondence_set)}, {len(source_down.points)}, {len(target_down.points)}")
+                print(f"ICP Number: {len(result_icp.correspondence_set)}, {len(source_down.points)}, {len(target_down.points)}")
                 if len(result_icp.correspondence_set) >= (1 / 5) * min(len(source_down.points), len(target_down.points)):
                     transformation = result_icp.transformation
                     if idx == len(voxel_radius) - 1:
@@ -981,8 +982,8 @@ class Controller():
         translation = agv2w[:3, 3]
         rotation = agv2w[:3, :3]
         
-        if True:
-            self.show_start(translation)
+        # if True:
+        #     self.show_start(translation)
 
         return translation, rotation
 
@@ -1008,7 +1009,7 @@ class Controller():
         paths[:3, 2] -= paths[0, 2]
         paths[:3, 2] += first_angle
 
-        if self.debug or True:
+        if self.debug:
             input("please move the agent to target point (Press Enter).")
         else:
             self.socket.send_info(info=paths, type="motion_moving")

@@ -1,3 +1,4 @@
+from sympy import false, true
 from dovsg.controller import Controller
 from dovsg.utils.utils import vis_depth
 import argparse
@@ -26,13 +27,13 @@ def main(args):
         controller.show_droidslam_pointcloud(use_inlier_mask=False, is_visualize=True)
 
         # transform droid-slam pose to floor base coord
-        controller.transform_pose_with_floor(display_result=False)
+        controller.transform_pose_with_floor(display_result=false)
 
         # use transformed pose train ace for relocalize
         controller.train_ace()
 
         # vis_depth(controller.recorder_dir)
-   
+
         controller.show_pointcloud(is_visualize=True)
 
     # when first times, init scenario
@@ -54,9 +55,9 @@ def main(args):
         press "V" to save view params
     """
     controller.show_instances(
-        controller.instance_objects, 
-        clip_vis=True, 
-        scene_graph=controller.instance_scene_graph, 
+        controller.instance_objects,
+        clip_vis=True,
+        scene_graph=controller.instance_scene_graph,
         show_background=True
     )
     

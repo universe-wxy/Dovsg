@@ -1,6 +1,6 @@
-from arm.xarm6 import XARM6
+from arm.xarm7 import XARM7
 from base.ranger_mini_3 import RangerMini3
-from camera.realsense_d455 import RealSense_D455
+from camera.realsense_d435 import RealSense_D435
 from transforms3d.quaternions import mat2quat, quat2mat
 from utils.utils import quat2rpy, rpy_to_rotation_matrix, get_pose_look_at
 from utils.utils import wrist_serial_number, top_serial_number, calib_result_path
@@ -9,6 +9,7 @@ import open3d as o3d
 import pickle
 import time
 import copy
+import rclpy
 
 """
 # run this scrip, you should running
@@ -26,10 +27,16 @@ class RobotControl:
         servo_speed=20
     ):
         try:
-            self.arm = XARM6()
+            if not rclpy.ok():
+                rclpy.init()
+        except Exception as e:
+            print(f"Failed to initialize rclpy: {e}")
+            raise
+        try:
+            self.arm = XARM7()
             self.base = RangerMini3()
-            self.camera_wrist = RealSense_D455(WH=[1280, 720], depth_threshold=[0, 2], serial_number=wrist_serial_number, remove_robot=True)
-            # self.camera_top = RealSense_D455(WH=[1280, 720], depth_threshold=[0.35, 2], serial_number=top_serial_number, remove_robot=True, FPS=5)
+            self.camera_wrist = RealSense_D435(WH=[1280, 720], depth_threshold=[0, 2], serial_number=wrist_serial_number, remove_robot=True)
+            # self.camera_top = RealSense_D435(WH=[1280, 720], depth_threshold=[0.35, 2], serial_number=top_serial_number, remove_robot=True, FPS=5)
         except Exception as e:
             print(e)
             self.arm.reset()
@@ -71,19 +78,28 @@ class RobotControl:
         ]
 
         self.see_poses = [
-            [0, 0, -180, 0, 135, 0],
-            [0, 0, -180, 0, 145, 0],
-            [0, 0, -180, 0, 155, 0],
-            [15, 0, -180, 0, 155, 0],
-            [15, 0, -180, 0, 145, 0],
-            [15, 0, -180, 0, 135, 0],
-            [-15, 0, -180, 0, 135, 0],
-            [-15, 0, -180, 0, 145, 0],
-            [-15, 0, -180, 0, 155, 0],
+            [0, -90, 0, 40, 0, 80, 0],
+            [15, -90, 0, 40, 0, 80, 0],
+            [15, -90, 0, 40, 0, 60, 0],
+            [0, -90, 0, 40, 0, 60, 0],
+            [-15, -90, 0, 40, 0, 60, 0],
+            [-15, -90, 0, 40, 0, 80, 0],
+            [-15, -90, 0, 40, 0, 100, 0],
+            [0, -90, 0, 40, 0, 100, 0],
+            [15, -90, 0, 40, 0, 100, 0],
+            # [0, -10, 0, 0, 0, -75, 0],
+            # [15, -10, 0, 0, 0, -75, 0],
+            # [15, -10, 0, 0, 0, -85, 0],
+            # [0, -10, 0, 0, 0, -85, 0],
+            # [-15, -10, 0, 0, 0, -85, 0],
+            # [-15, -10, 0, 0, 0, -75, 0],
+            # [-15, -10, 0, 0, 0, -65, 0],
+            # [0, -10, 0, 0, 0, -65, 0],
+            # [15, -10, 0, 0, 0, -65, 0]
         ]
 
-        self.see_back_pose = [180, 0, -180, 0, 150, 0]
-        self.place_back_pose = [180, 0, -110, 0, 110, 0]
+        self.see_back_pose = [0, -10, 0, 0, 0, -75, 0]
+        self.place_back_pose = [0, -10, 0, 0, 0, -75, 0]
 
         # self.see_poses = [
         #     [0, 0, 0, 0, -90, 0],
@@ -158,7 +174,7 @@ class RobotControl:
                 "dist_coef": self.camera_wrist.dist_coef,
             }
 
-        if False:
+        else:
             pcds = []
             for name, obs in observations["wrist"].items():
                 # Get the rgb, point cloud, and the camera pose
